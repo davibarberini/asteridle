@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Asteridle</title>
+    <script type="module" crossorigin src="/asteridle/assets/index-C0Abjs76.js"></script>
+    <link rel="stylesheet" crossorigin href="/asteridle/assets/index-DKqnr46u.css">
+  </head>
+  <body>
+    <div id="app">
+      <div id="game-root"></div>
+      <div id="hud" aria-live="polite">
+        <section class="hud-panel hud-panel--left">
+          <div class="hud-kicker">Money</div>
+          <div id="money" class="hud-value">$0</div>
+        </section>
+        <section class="hud-panel hud-panel--center">
+          <div id="hp" class="hud-value hud-value--hp">HP 100 / 100</div>
+          <div id="status" class="status">WASD / arrows to thrust and turn. Space to fire.</div>
+        </section>
+        <div class="hud-right-cluster">
+          <section class="hud-panel hud-panel--fps">
+            <div class="hud-kicker">FPS</div>
+            <div id="fps" class="hud-value hud-value--fps">--</div>
+          </section>
+          <section class="hud-panel hud-panel--right">
+            <div class="hud-kicker">Sector</div>
+            <div id="sector" class="hud-value">0,0</div>
+          </section>
+          <div class="settings-control-panel">
+            <button class="settings-toggle" id="settings-toggle" type="button" aria-label="Open settings" aria-expanded="false">⚙</button>
+            <div class="settings-menu is-hidden" id="settings-menu">
+              <label class="settings-control" for="volume-slider">
+                <span>Volume</span>
+                <strong id="volume-value">100%</strong>
+              </label>
+              <input id="volume-slider" class="volume-slider" type="range" min="0" max="120" value="75" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="idle-dock" aria-label="Idle systems">
+        <div id="reward-feed" aria-live="polite"></div>
+        <section class="shop-panel" id="shop-panel" aria-live="polite">
+          <div class="shop-heading">
+            <div>
+              <div class="hud-kicker" id="shop-kicker">Upgrades</div>
+              <h2 id="shop-title">Ore Refinery</h2>
+            </div>
+            <button class="shop-close" id="shop-close" type="button" aria-label="Close shop">x</button>
+          </div>
+          <p id="shop-copy" class="shop-copy">Convert asteroid dust into steady background credits.</p>
+          <div class="shop-stats" id="shop-stats"></div>
+          <div class="shop-actions" id="shop-actions"></div>
+        </section>
+        <nav class="bottom-nav" aria-label="Shop tabs">
+          <button class="nav-button is-active" type="button" data-tab="upgrades">Upgrades</button>
+          <button class="nav-button" type="button" data-tab="drones">Drones</button>
+          <button class="nav-button" type="button" data-tab="skills">Skills</button>
+          <button class="nav-button" type="button" data-tab="weapons">Weapons</button>
+        </nav>
+      </div>
+      <div id="ui-modal" class="ui-modal is-hidden" aria-hidden="true">
+        <div id="ui-modal-backdrop" class="ui-modal__backdrop"></div>
+        <section id="ui-modal-panel" class="ui-modal__panel" role="dialog" aria-modal="true" aria-labelledby="ui-modal-title">
+          <header class="ui-modal__header">
+            <div>
+              <div class="hud-kicker" id="ui-modal-kicker">Info</div>
+              <h2 id="ui-modal-title">Details</h2>
+              <p id="ui-modal-copy" class="ui-modal__copy"></p>
+            </div>
+            <button id="ui-modal-close" class="ui-modal__close" type="button" aria-label="Close modal">x</button>
+          </header>
+          <div id="ui-modal-body" class="ui-modal__body"></div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
