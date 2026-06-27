@@ -5,7 +5,8 @@ const CORE_ASSETS = [
   `${APP_SCOPE}index.html`,
   `${APP_SCOPE}manifest.webmanifest`,
   `${APP_SCOPE}pwa-icon.svg`,
-  `${APP_SCOPE}skill-icons.svg`
+  `${APP_SCOPE}skill-icons.svg`,
+  `${APP_SCOPE}audio/zone-1.mp3`
 ];
 
 self.addEventListener('install', (event) => {
