@@ -2,32 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Asteridle" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="/asteridle/manifest.webmanifest" />
+    <link rel="icon" href="/asteridle/pwa-icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/asteridle/pwa-icon.svg" />
     <title>Asteridle</title>
-    <script type="module" crossorigin src="/asteridle/assets/index-OhYtAmxB.js"></script>
-    <link rel="stylesheet" crossorigin href="/asteridle/assets/index-CwuioMne.css">
+    <script type="module" crossorigin src="/asteridle/assets/index-CvTpg3JP.js"></script>
+    <link rel="stylesheet" crossorigin href="/asteridle/assets/index-D1j8US3t.css">
   </head>
   <body>
     <div id="app">
       <div id="game-root"></div>
+      <div id="death-fade" aria-hidden="true"></div>
+      <div id="low-hp-veil" aria-hidden="true"></div>
       <div id="hud" aria-live="polite">
         <section class="hud-panel hud-panel--left">
-          <div class="hud-kicker">Money</div>
-          <div id="money" class="hud-value">$0</div>
+          <div class="money-readout">
+            <div class="hud-kicker">Money</div>
+            <div id="money" class="hud-value">$0</div>
+          </div>
+          <div id="hp-meter" class="hp-meter" aria-label="Ship hull">
+            <span class="hp-ship" aria-hidden="true">
+              <span class="hp-ship__fill"></span>
+            </span>
+            <span id="hp" class="hp-meter__text">100 / 100</span>
+          </div>
         </section>
+        <div id="reward-feed" aria-live="polite"></div>
         <section class="hud-panel hud-panel--center">
-          <div id="hp" class="hud-value hud-value--hp">HP 100 / 100</div>
-          <div id="status" class="status">WASD / arrows to fly. Hold touch or mouse to follow and fire.</div>
+          <div id="status" class="status">Drag and release tension to slingshot. WASD / arrows also fly.</div>
         </section>
         <div class="hud-right-cluster">
-          <section class="hud-panel hud-panel--fps">
-            <div class="hud-kicker">FPS</div>
-            <div id="fps" class="hud-value hud-value--fps">--</div>
-          </section>
-          <section class="hud-panel hud-panel--right">
-            <div class="hud-kicker">Sector</div>
-            <div id="sector" class="hud-value">0,0</div>
-          </section>
+          <button class="map-toggle" id="map-toggle" type="button" aria-label="Open zone map" disabled>
+            <span class="map-toggle__icon">⌖</span>
+            <span id="sector" class="map-toggle__label">Map</span>
+          </button>
           <div class="settings-control-panel">
             <button class="settings-toggle" id="settings-toggle" type="button" aria-label="Open settings" aria-expanded="false">⚙</button>
             <div class="settings-menu is-hidden" id="settings-menu">
@@ -41,8 +55,9 @@
         </div>
       </div>
       <div id="idle-dock" aria-label="Idle systems">
-        <div id="reward-feed" aria-live="polite"></div>
+        <button class="shop-drawer-backdrop is-hidden" id="shop-drawer-backdrop" type="button" aria-label="Close shop"></button>
         <section class="shop-panel is-hidden" id="shop-panel" aria-live="polite">
+          <button class="shop-drawer-handle" id="shop-drawer-handle" type="button" aria-label="Close shop"></button>
           <div class="shop-heading">
             <div>
               <div class="hud-kicker" id="shop-kicker">Upgrades</div>
@@ -54,6 +69,7 @@
           <div class="shop-stats" id="shop-stats"></div>
           <div class="shop-actions" id="shop-actions"></div>
         </section>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open upgrades menu" aria-expanded="false">☰</button>
         <nav class="bottom-nav" aria-label="Shop tabs">
           <button class="nav-button" type="button" data-tab="upgrades">Upgrades</button>
           <button class="nav-button" type="button" data-tab="drones">Drones</button>
@@ -65,6 +81,7 @@
       <div id="ui-modal" class="ui-modal is-hidden" aria-hidden="true">
         <div id="ui-modal-backdrop" class="ui-modal__backdrop"></div>
         <section id="ui-modal-panel" class="ui-modal__panel" role="dialog" aria-modal="true" aria-labelledby="ui-modal-title">
+          <button class="ui-modal__handle" type="button" aria-label="Close modal"></button>
           <header class="ui-modal__header">
             <div>
               <div class="hud-kicker" id="ui-modal-kicker">Info</div>
