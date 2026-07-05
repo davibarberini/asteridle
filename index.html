@@ -12,8 +12,8 @@
     <link rel="icon" href="/asteridle/pwa-icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/asteridle/pwa-icon.svg" />
     <title>Asteridle</title>
-    <script type="module" crossorigin src="/asteridle/assets/index-BRzgFh_d.js"></script>
-    <link rel="stylesheet" crossorigin href="/asteridle/assets/index-DJAH16_x.css">
+    <script type="module" crossorigin src="/asteridle/assets/index-B7FeljGq.js"></script>
+    <link rel="stylesheet" crossorigin href="/asteridle/assets/index-D9p1M9jS.css">
   </head>
   <body>
     <div id="app">
@@ -66,6 +66,20 @@
         <div id="reward-feed" aria-live="polite"></div>
         <section class="hud-panel hud-panel--center">
           <div id="status" class="status">Drag and release tension to slingshot. WASD / arrows also fly.</div>
+        </section>
+        <section id="survival-hud" class="survival-hud is-hidden" aria-label="Survival status">
+          <div class="survival-timer">
+            <span>Survival</span>
+            <strong id="survival-timer">0:00</strong>
+            <small>Best <b id="survival-best">0:00</b></small>
+          </div>
+          <div class="survival-threat">
+            <span class="survival-threat__label">Threat</span>
+            <div class="survival-threat__track" aria-hidden="true">
+              <span id="survival-threat-fill" class="survival-threat__fill"></span>
+            </div>
+            <strong id="survival-threat">1</strong>
+          </div>
         </section>
         <section id="first-warp-goal" class="first-warp-goal is-hidden" aria-label="Current objective">
           <div class="first-warp-goal__body">
