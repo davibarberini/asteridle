@@ -12,8 +12,8 @@
     <link rel="icon" href="/asteridle/pwa-icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/asteridle/pwa-icon.svg" />
     <title>Asteridle</title>
-    <script type="module" crossorigin src="/asteridle/assets/index-DX6bRIq5.js"></script>
-    <link rel="stylesheet" crossorigin href="/asteridle/assets/index-D9p1M9jS.css">
+    <script type="module" crossorigin src="/asteridle/assets/index-z6pCs1Ab.js"></script>
+    <link rel="stylesheet" crossorigin href="/asteridle/assets/index-28hrxlK1.css">
   </head>
   <body>
     <div id="app">
@@ -32,8 +32,7 @@
       <section id="main-menu" class="main-menu" aria-live="polite">
         <div class="main-menu__panel">
           <p id="main-menu-language-label" class="main-menu__kicker">Language</p>
-          <h1>Asteridle</h1>
-          <p id="main-menu-subtitle" class="main-menu__subtitle">Choose your language, then jump into the asteroid field.</p>
+          <p id="main-menu-subtitle" class="main-menu__subtitle">Choose your language.</p>
           <div class="main-menu__languages" role="group" aria-label="Language">
             <button class="main-menu__language" type="button" data-language="pt-BR">Português</button>
             <button class="main-menu__language" type="button" data-language="en-US">English</button>
@@ -62,10 +61,16 @@
             </span>
             <span id="hp" class="hp-meter__text">100 / 100</span>
           </div>
+          <div id="ship-xp-meter" class="ship-xp-meter" aria-label="Ship level progress">
+            <span id="ship-level" class="ship-xp-meter__level">Lv 1</span>
+            <span class="ship-xp-meter__track" aria-hidden="true">
+              <span class="ship-xp-meter__fill"></span>
+            </span>
+          </div>
         </section>
         <div id="reward-feed" aria-live="polite"></div>
         <section class="hud-panel hud-panel--center">
-          <div id="status" class="status">Drag and release tension to slingshot. WASD / arrows also fly.</div>
+          <div id="status" class="status">Drag and release to boost. Touch/hold to fire. WASD also flies.</div>
         </section>
         <section id="survival-hud" class="survival-hud is-hidden" aria-label="Survival status">
           <div class="survival-timer">
@@ -80,6 +85,7 @@
             </div>
             <strong id="survival-threat">1</strong>
           </div>
+          <div id="run-modifiers" class="run-modifiers is-hidden" aria-label="Active run modifiers"></div>
         </section>
         <section id="first-warp-goal" class="first-warp-goal is-hidden" aria-label="Current objective">
           <div class="first-warp-goal__body">
@@ -92,6 +98,10 @@
           <span id="first-warp-goal-progress-text" class="first-warp-goal__progress-text">0/0</span>
         </section>
         <div class="hud-right-cluster">
+          <button class="route-toggle is-hidden" id="route-toggle" type="button" aria-label="Travel to next zone" disabled>
+            <span class="route-toggle__icon">➤</span>
+            <span id="route-target" class="route-toggle__label">Route</span>
+          </button>
           <button class="map-toggle is-hidden" id="map-toggle" type="button" aria-label="Open zone map" disabled>
             <span class="map-toggle__icon">⌖</span>
             <span id="sector" class="map-toggle__label">Map</span>
